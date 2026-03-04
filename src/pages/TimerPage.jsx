@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const actionClass =
-  'border border-white px-5 py-2 text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-40'
+  'block w-full border border-white px-5 py-2 text-center text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto'
 
 function formatTimer(totalSeconds) {
   const hours = Math.floor(totalSeconds / 3600)
@@ -53,36 +53,40 @@ function TimerPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-xl border border-white p-8 text-center">
-        <p className="mb-2 text-sm tracking-[0.3em] uppercase">Timer</p>
-        <h1 className="text-5xl font-bold tracking-widest sm:text-6xl">{displayValue}</h1>
+    <main className="flex min-h-screen items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-xl border border-white p-5 text-center sm:p-8">
+        <p className="mb-2 text-xs tracking-[0.2em] uppercase sm:text-sm sm:tracking-[0.3em]">Timer</p>
+        <h1 className="font-mono text-[clamp(1.9rem,12vw,3.75rem)] leading-none font-bold tracking-wide sm:tracking-widest">
+          {displayValue}
+        </h1>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <input
-            type="number"
-            min="0"
-            value={minutesInput}
-            onChange={(event) => setMinutesInput(event.target.value)}
-            className="w-24 border border-white bg-black px-3 py-2 text-center text-white outline-none"
-            placeholder="MM"
-          />
-          <span className="text-xl">:</span>
-          <input
-            type="number"
-            min="0"
-            max="59"
-            value={secondsInput}
-            onChange={(event) => setSecondsInput(event.target.value)}
-            className="w-24 border border-white bg-black px-3 py-2 text-center text-white outline-none"
-            placeholder="SS"
-          />
-          <button type="button" className={actionClass} onClick={setTimerFromInput}>
+        <div className="mx-auto mt-7 w-full max-w-xs sm:mt-8">
+          <div className="flex items-center gap-2">
+            <input
+              type="number"
+              min="0"
+              value={minutesInput}
+              onChange={(event) => setMinutesInput(event.target.value)}
+              className="w-1/2 border border-white bg-black px-3 py-2 text-center text-white outline-none"
+              placeholder="MM"
+            />
+            <span className="text-lg">:</span>
+            <input
+              type="number"
+              min="0"
+              max="59"
+              value={secondsInput}
+              onChange={(event) => setSecondsInput(event.target.value)}
+              className="w-1/2 border border-white bg-black px-3 py-2 text-center text-white outline-none"
+              placeholder="SS"
+            />
+          </div>
+          <button type="button" className="mt-3 w-full border border-white px-5 py-2 text-center text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black" onClick={setTimerFromInput}>
             Set
           </button>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center">
           <button
             type="button"
             className={actionClass}

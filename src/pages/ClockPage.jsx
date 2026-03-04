@@ -27,14 +27,16 @@ function ClockPage() {
   })
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-xl border border-white p-8 text-center">
-        <p className="mb-2 text-sm tracking-[0.3em] uppercase">Clock</p>
-        <h1 className="text-6xl font-bold tracking-widest sm:text-7xl">{time}</h1>
-        <p className="mt-4 text-sm tracking-wide">{date}</p>
+    <main className="flex min-h-screen items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-xl border border-white p-5 text-center sm:p-8">
+        <p className="mb-2 text-xs tracking-[0.2em] uppercase sm:text-sm sm:tracking-[0.3em]">Clock</p>
+        <h1 className="font-mono text-[clamp(2.2rem,14vw,4.5rem)] leading-none font-bold tracking-wide sm:tracking-widest">
+          {time}
+        </h1>
+        <p className="mt-4 text-xs tracking-wide sm:text-sm">{date}</p>
         <Link
           to="/"
-          className="mt-8 inline-block border border-white px-5 py-2 text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black"
+          className="mt-7 block w-full border border-white px-5 py-2 text-center text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black sm:mt-8 sm:inline-block sm:w-auto"
         >
           Back
         </Link>
