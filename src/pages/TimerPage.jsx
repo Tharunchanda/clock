@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import useWakeLock from '../hooks/useWakeLock'
 
 const actionClass =
   'block w-full border border-white px-5 py-2 text-center text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto'
@@ -20,6 +21,8 @@ function TimerPage() {
   const [configuredSeconds, setConfiguredSeconds] = useState(60)
   const [remainingSeconds, setRemainingSeconds] = useState(60)
   const [isRunning, setIsRunning] = useState(false)
+
+  useWakeLock(isRunning)
 
   useEffect(() => {
     if (!isRunning || remainingSeconds <= 0) {

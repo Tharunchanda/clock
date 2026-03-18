@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
+import useWakeLock from '../hooks/useWakeLock'
 
 function FullscreenButton() {
   const [isFullscreen, setIsFullscreen] = useState(Boolean(document.fullscreenElement))
   const label = isFullscreen ? 'Exit full screen' : 'Enter full screen'
+
+  useWakeLock(isFullscreen)
 
   useEffect(() => {
     const handleFullscreenChange = () => {

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import useWakeLock from '../hooks/useWakeLock'
 
 const actionClass =
   'block w-full border border-white px-5 py-2 text-center text-sm font-semibold uppercase tracking-wide transition hover:bg-white hover:text-black sm:w-auto'
@@ -21,6 +22,8 @@ function formatStopwatch(ms) {
 function StopwatchPage() {
   const [elapsedMs, setElapsedMs] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
+
+  useWakeLock(isRunning)
 
   useEffect(() => {
     if (!isRunning) {
